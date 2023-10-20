@@ -1,0 +1,12 @@
+{
+  "name": "nellcorp-chalenge-joel-marinho",
+  "description": "API para o desafio da nellcorp",
+  "version": "1.0.0",
+  "main": "dist/server.js",
+  "repository": "https://ghp_TUvoeRUL0engkxnK6Dr2Al1CNHzl9N4cP0C@github.com/joelmar2011140/nellcorp-chalenge-joel-marinho.git",
+  "author": "Joel Marinho <joeldeveloper2011140@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "git-commit-msg-linter": "5.0.4"
+  }
+}

@@ -1,0 +1,10 @@
+services:
+  api:
+    networks:
+      - default-api
+  db-api:
+    networks:
+      - default-api
+  base-de-dados:
+network:
+  default-api:

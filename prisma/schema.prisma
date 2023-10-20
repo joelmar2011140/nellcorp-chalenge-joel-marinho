@@ -6,3 +6,28 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Conta {
+  id         String      @id @default(uuid())
+  numero     String      @unique
+  saldo      Float
+  transacoes Transacao[]
+}
+
+model Transacao {
+  id         String         @id @default(cuid())
+  referencia String
+  conta      Conta          @relation(fields: [contaId], references: [id])
+  contaId    String
+  tipo       TipoTransacoes
+  data       DateTime       @default(now())
+}
+
+enum TipoTransacoes {
+  TRANSFERENCIA
+  DEPOISTO
+  PAGAMENTO
+  REEMBOLSO
+  LEVANTAMENTO
+  CONSULTA
+}

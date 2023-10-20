@@ -20,9 +20,9 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRESQL_USERNAME: root
-      - POSTGRESQL_PASSWORD: root
-      - POSTGRESQL_DATABASE: nellcorp-desafio-api-db
+      POSTGRESQL_USERNAME: root
+      POSTGRESQL_PASSWORD: root
+      POSTGRESQL_DATABASE: nellcorp-desafio-api-db
     networks:
       - default-api
 

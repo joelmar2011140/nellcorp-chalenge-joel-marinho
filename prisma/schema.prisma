@@ -12,20 +12,31 @@ model Conta {
   numero     String      @unique
   saldo      Float
   transacoes Transacao[]
+  pagamentos  Pagamento[]
 }
 
 model Transacao {
-  id         String         @id @default(cuid())
-  referencia String
-  conta      Conta          @relation(fields: [contaId], references: [id])
-  contaId    String
-  tipo       TipoTransacoes
-  data       DateTime       @default(now())
+  id          String         @id @default(cuid())
+  referencia  String
+  conta       Conta          @relation(fields: [contaId], references: [id])
+  contaId     String
+  tipo        TipoTransacoes
+  pagamento   Pagamento?     @relation(fields: [pagamentoId], references: [id])
+  data        DateTime       @default(now())
+  pagamentoId String?
+}
+
+model Pagamento {
+  id        String      @id @default(cuid())
+  conta     Conta       @relation(fields: [contaId], references: [id])
+  valor     Int?
+  Transacao Transacao[]
+  contaId   String
 }
 
 enum TipoTransacoes {
   TRANSFERENCIA
-  DEPOISTO
+  DEPOSITO
   PAGAMENTO
   REEMBOLSO
   LEVANTAMENTO

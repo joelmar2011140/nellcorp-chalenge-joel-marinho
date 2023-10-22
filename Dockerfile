@@ -5,6 +5,7 @@ LABEL autor="Joel Marinho"
 WORKDIR /app
 COPY package*.json tsconfig.json /app/
 RUN yarn install
+COPY prisma .
 COPY . /app
 ENV PORT=6556
 ENV DATABASE_URL="postgresql://root:root@localhost:5432/nellcorp-desafio-api-db?schema=public"
@@ -18,4 +19,5 @@ ENV PORT=6556
 COPY package*.json /app/
 RUN yarn install --production=true
 COPY --from=build /app/dist /app/dist
+COPY --from=build /app/prisma /app/prisma
 CMD ["yarn", "start"]

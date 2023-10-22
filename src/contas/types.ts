@@ -5,7 +5,8 @@ export interface ITransferencia {
 }
 
 export interface IPagamento extends Partial<ITransferencia> {
-  gorjeta?: number
+  bonificar?: number
+  contaBonificacao?: number
 }
 
 export interface IReembolso extends Partial<ITransferencia> {

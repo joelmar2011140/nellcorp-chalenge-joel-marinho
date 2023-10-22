@@ -9,29 +9,32 @@ datasource db {
 
 model Conta {
   id         String      @id @default(uuid())
-  numero     String      @unique
+  numero     Int         @unique
   saldo      Float
   transacoes Transacao[]
-  pagamentos  Pagamento[]
+  pagamentos Pagamento[]
 }
 
 model Transacao {
   id          String         @id @default(cuid())
-  referencia  String
+  referencia  String         @unique
   conta       Conta          @relation(fields: [contaId], references: [id])
   contaId     String
   tipo        TipoTransacoes
   pagamento   Pagamento?     @relation(fields: [pagamentoId], references: [id])
   data        DateTime       @default(now())
-  pagamentoId String?
+  pagamentoId String?        @unique
+  reembolso   Boolean?       @default(false)
 }
 
 model Pagamento {
-  id        String      @id @default(cuid())
-  conta     Conta       @relation(fields: [contaId], references: [id])
-  valor     Int?
-  Transacao Transacao[]
-  contaId   String
+  id               String     @id @default(cuid())
+  conta            Conta      @relation(fields: [contaId], references: [id])
+  valor            Int?
+  contaBonificacao Int?
+  valorBonificacao Float?
+  Transacao        Transacao?
+  contaId          String
 }
 
 enum TipoTransacoes {

@@ -1,0 +1,78 @@
+
+# NellCorp API Desafio
+
+
+
+
+
+## Stack utilizada
+
+**Back-end:** Node, Express
+
+
+## Funcionalidades
+
+- Depósitos em uma conta
+- Levantamento de uma conta
+- transferência entre duas contas
+- reembolso de uma transação anterior
+- saldo da conta
+- histórico
+
+
+## Uso/Exemplos
+
+```typescript
+Reembolsar
+
+PATCH http://localhost:6556/api/contas/:numeroDeConta/reembolsar
+payload:
+{
+	"referencia": "b77f0c1166d3"
+}
+
+Efetuar Pagamento
+
+PATCH http://localhost:6556/api/contas/:numeroDeConta/pagamento
+payload:
+{
+	"numeroContaReceptor": 807898714,
+	"quantia": 120
+}
+
+
+Ver historico
+
+GET http://localhost:6556/api/contas/807898714/historico
+
+Consultar Saldo
+
+GET http://localhost:6556/api/contas/807898714/consultar
+
+Efetuar depósito
+
+PATCH http://localhost:6556/api/contas/:numeroDeConta/depositar
+payload:
+{
+	"numero": 807898714,
+	"quantia": 120
+}
+
+Efetuar levantamento
+
+PATCH http://localhost:6556/api/contas/:numeroDeConta/levantar
+payload:
+{
+	"numero": 807898714,
+	"quantia": 120
+}
+
+Efetuar transferência
+
+PATCH http://localhost:6556/api/contas/:numeroDeConta/transferir
+payload:
+{
+	"numeroContaOrigem": 807898714,
+  "numeroContaReceptor": 807898714,
+	"quantia": 120
+}

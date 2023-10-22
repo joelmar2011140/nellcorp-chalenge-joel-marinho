@@ -10,7 +10,7 @@
     "lint:fix": "eslint './src/**/*.ts' --fix",
     "dev": "ts-node-dev src/server.ts --respawn | node_modules/bunyan/bin/bunyan",
     "build": "yarn lint:fix & tsc",
-    "start": "node dist/server.js | node_modules/bunyan/bin/bunyan"
+    "start": "npx prisma db push && node dist/server.js | node_modules/bunyan/bin/bunyan"
   },
   "devDependencies": {
     "@types/bunyan": "1.8.10",
